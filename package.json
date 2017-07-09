@@ -1,50 +1,50 @@
 {
-	"name": "gamedig",
-	"description": "Query for the status of any game server in Node.JS",
-	"tags": [
-		"srcds",
-		"query",
-		"game",
-		"utility",
-		"util",
-		"server"
-	],
-	"main": "lib/index.js",
-	"author": "Michael Morrison",
-	"version": "0.2.25",
-	"repository" : {
-		"type" : "git",
-		"url" : "https://github.com/sonicsnes/node-gamedig.git"
-	},
-	"bugs" : {
-		"url" : "https://github.com/sonicsnes/node-gamedig/issues"
-	},
-	"licenses" : [
-		{
-			"type" : "MIT",
-			"url" : "https://raw.github.com/sonicsnes/node-gamedig/master/LICENSE"
-		}
-	],
-	"dependencies": {
-		"iconv-lite": "~0.4.6",
-		"long": "~2.2.3",
-		"async": "~0.9.0",
-		"compressjs": "~1.0.2",
-		"gbxremote": "~0.1.4",
-		"request": "~2.74.0",
-		"minimist": "~1.1.0",
-		"varint": "~4.0.0",
-		"moment": "~2.9.0"
-	},
-	"bin": {
-		"gamedig": "bin/gamedig.js"
-	},
-	"files": [
-		"bin/gamedig.js",
-		"lib/",
-		"protocols/",
-		"games.txt",
-		"LICENSE",
-		"README.md"
-	]
+  "name": "gamedig",
+  "description": "Query for the status of any game server in Node.JS",
+  "tags": [
+    "srcds",
+    "query",
+    "game",
+    "utility",
+    "util",
+    "server"
+  ],
+  "main": "lib/index.js",
+  "author": "Michael Morrison",
+  "version": "0.2.25",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sonicsnes/node-gamedig.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sonicsnes/node-gamedig/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/sonicsnes/node-gamedig/master/LICENSE"
+    }
+  ],
+  "dependencies": {
+    "iconv-lite": "~0.4.6",
+    "long": "~2.2.3",
+    "async": "~0.9.0",
+    "compressjs": "~1.0.2",
+    "gbxremote": "~0.1.4",
+    "request": "~2.81.0",
+    "minimist": "~1.1.0",
+    "varint": "~4.0.0",
+    "moment": "~2.9.0"
+  },
+  "bin": {
+    "gamedig": "bin/gamedig.js"
+  },
+  "files": [
+    "bin/gamedig.js",
+    "lib/",
+    "protocols/",
+    "games.txt",
+    "LICENSE",
+    "README.md"
+  ]
 }
