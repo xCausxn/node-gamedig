@@ -12,12 +12,12 @@ Unsure if any bedrock servers respond to gamespy3 and minecraftbedrock
  */
 
 export default class minecraft extends Core {
-  constructor () {
+  constructor() {
     super()
     this.srvRecord = '_minecraft._tcp'
   }
 
-  async run (state) {
+  async run(state) {
     /** @type {Promise<Results>[]} */
     const promises = []
 
@@ -39,8 +39,12 @@ export default class minecraft extends Core {
     bedrockResolver.udpSocket = this.udpSocket
     promises.push(bedrockResolver)
 
-    const ranPromises = promises.map(p => p.runOnceSafe().catch(_ => undefined))
-    const [vanillaState, gamespyState, bedrockState] = await Promise.all(ranPromises)
+    const ranPromises = promises.map((p) =>
+      p.runOnceSafe().catch((_) => undefined)
+    )
+    const [vanillaState, gamespyState, bedrockState] = await Promise.all(
+      ranPromises
+    )
 
     state.raw.vanilla = vanillaState
     state.raw.gamespy = gamespyState
@@ -64,35 +68,37 @@ export default class minecraft extends Core {
         if (!name && typeof description === 'object' && description.text) {
           name = description.text
         }
-        if (!name && typeof description === 'object' && description.extra) {
-          let stack = [description];
+        if (typeof description === 'object' && description.extra) {
+          const stack = [description]
 
           while (stack.length) {
-            let current = stack.pop();
+            const current = stack.pop()
 
             if (current.text) {
-              name += current.text;
+              name += current.text
             }
 
             if (Array.isArray(current.extra)) {
-              stack.push(...current.extra.reverse());
+              stack.push(...current.extra.reverse())
             }
           }
         }
-        state.name = name
+        state.name = name.trim()
       } catch (e) {}
       if (vanillaState.numplayers) state.numplayers = vanillaState.numplayers
       if (vanillaState.maxplayers) state.maxplayers = vanillaState.maxplayers
       if (vanillaState.players.length) state.players = vanillaState.players
       if (vanillaState.ping) this.registerRtt(vanillaState.ping)
-      if (vanillaState.raw.version) state.version = vanillaState.raw.version.name
+      if (vanillaState.raw.version)
+        state.version = vanillaState.raw.version.name
     }
     if (gamespyState) {
       if (gamespyState.name) state.name = gamespyState.name
       if (gamespyState.numplayers) state.numplayers = gamespyState.numplayers
       if (gamespyState.maxplayers) state.maxplayers = gamespyState.maxplayers
       if (gamespyState.players.length) state.players = gamespyState.players
-      else if (gamespyState.numplayers) state.numplayers = gamespyState.numplayers
+      else if (gamespyState.numplayers)
+        state.numplayers = gamespyState.numplayers
       if (gamespyState.ping) this.registerRtt(gamespyState.ping)
     }
     if (bedrockState) {
